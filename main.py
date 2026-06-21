@@ -1,9 +1,4 @@
-import numpy
-import sys
-import matplotlib
-print (numpy.__version__)
-print(matplotlib.__version__)
-print(sys.version)
+
 class Node():
     def __init__(self,bias=0,weight=0,input=0):
         self.bias = bias

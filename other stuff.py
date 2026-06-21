@@ -36,7 +36,7 @@ output3 = np.dot(inputs2, weights3)+ bias[2]
 print(output3)
 #2d array:
 array_2d = np.array([[5,6,8], [1,2,3]])
-print(array_2d)
+
 
 # next time: gradient descent (loss algorithm/correction)
 # how to setup weights automatically
