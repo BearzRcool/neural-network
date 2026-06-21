@@ -1,3 +1,9 @@
+import numpy
+import sys
+import matplotlib
+print (numpy.__version__)
+print(matplotlib.__version__)
+print(sys.version)
 class Node():
     def __init__(self,bias=0,weight=0,input=0):
         self.bias = bias
@@ -52,4 +58,4 @@ NodeG.weight = 7
 NodeG.input = NodeA.output()+NodeB.output()+NodeC.output()+NodeD.output()+NodeG.bias
 
 
-print(NodeG, NodeF, NodeE)
+#print(NodeG, NodeF, NodeE)
