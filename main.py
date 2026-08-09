@@ -1,3 +1,4 @@
+
 class Node():
     def __init__(self,bias=0.0,weight=[],input=0.0):
         self.bias = bias
@@ -48,46 +49,5 @@ NodeC.input = 7
 # NodeG.weight = 7
 # NodeG.input = NodeA.output()+NodeB.output()+NodeC.output()+NodeD.output()+NodeG.bias
 
-# #third layer:
-# NodeH = Node()
-# NodeI = Node()
 
-# NodeH.bias = 3
-# NodeH.weight = 3
-# NodeH.input = NodeE.output()+NodeF.output()+NodeG.output()+NodeH.bias
-
-# NodeI.bias = 0.7
-# NodeI.weight = 9
-# NodeI.input = NodeE.output()+NodeF.output()+NodeG.output()+NodeI.bias
-
-# #fourth layer:
-# NodeJ = Node()
-
-# NodeH.bias = 3.2
-# NodeH.weight = 5
-# NodeH.input = NodeE.output()+NodeF.output()+NodeG.output()+NodeJ.bias
-
-def ForwardProp(layer1, layer2):
-    output = 0
-    count = 0
-    for neuron in layer1:
-        output += neuron.output(count)
-        test = layer2[count]
-        test.input = output
-    test.input+= test.bias #not working, multiple weights
-NodeZ = Node()
-NodeZ.bias = 1
-NodeZ.weight = [0.4]
-
-NodeX = Node()
-NodeX.bias = 3
-NodeX.weight = [0.5]
-
-NodeY = Node()
-NodeY.bias = 0.2
-
-layer1 = [NodeA,NodeB,NodeC]
-layer2 = [NodeZ,NodeX]
-layer3 = [NodeY]
-ForwardProp(layer1,layer2)
-ForwardProp(layer2,layer3)
+print(NodeG, NodeF, NodeE)
