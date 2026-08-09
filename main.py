@@ -49,5 +49,3 @@ NodeC.input = 7
 # NodeG.weight = 7
 # NodeG.input = NodeA.output()+NodeB.output()+NodeC.output()+NodeD.output()+NodeG.bias
 
-
-print(NodeG, NodeF, NodeE)
