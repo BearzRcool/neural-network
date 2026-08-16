@@ -28,12 +28,11 @@ data_loader = DataLoader(image_dataset, batch_size=32, shuffle=True)
 
 # BELOW IS NOT SWITCHED TO MY CODE
 
-# 5. Verify the setup
 print(class_names := image_dataset.classes)  # Outputs: ['cat', 'dog']
 print(f"Total images found: {len(image_dataset)}")
 
-# Example of looping through a batch during training
-for images, labels in data_loader:
-    print(f"Batch shape: {images.shape}")  # e.g., [32, 3, 224, 224]
-    print(f"Labels in this batch: {labels}")
-    break  # Stop after the first batch for demonstration
+# # Example of looping through a batch during training
+# for images, labels in data_loader:
+#     print(f"Batch shape: {images.shape}")  # e.g., [32, 3, 224, 224]
+#     print(f"Labels in this batch: {labels}")
+#     break  # Stop after the first batch for demonstration
