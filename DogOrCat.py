@@ -9,6 +9,7 @@ from torchvision import models
 import torch.nn as nn
 import torch.optim as optim
 
+from PIL import Image
 
 from pathlib import Path
 
@@ -34,7 +35,7 @@ print(f"Total images found: {len(image_dataset)}")
 
 
 #pre trained network
-model = models.resent18(weights=models.ResNet18_Weights.DEFAULT)
+model = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
 
 #freeze the pre trained layers, so only final layer changes
 for param in model.parameters():
@@ -61,12 +62,13 @@ epochs = 5
 model.train()
 
 for epoch in range(epochs):
+    
     running_loss = 0.0
     correct = 0
     total = 0
 
     for images, labels in data_loader:
-        images, labels = images.to(device), images.to(device)
+        images, labels = images.to(device), labels.to(device)
 
         optimizer.zero_grad() #zero gradients
 
@@ -86,7 +88,7 @@ for epoch in range(epochs):
         total += labels.size(0)
 
         correct += (predicted == labels).sum().item()
-
+        print("1 image done")
     epoch_loss = running_loss / total
     epoch_acc = correct / total
 
@@ -97,4 +99,36 @@ for epoch in range(epochs):
 # torch.save(model.state_dict(), "cat_dog_model.pth")
 # print("Model saved to cat_dog_model.pth")
 
-#next time: use gemini to figure out how to run images through the model
+
+
+
+
+#running image through:               cat or dog, 0-100
+image_path = data_dir / "TestImages" / "cat" / "0.jpg"
+image = Image.open(image_path).convert("RGB")
+
+
+
+
+testing_transform = transforms.Compose([
+    transforms.Resize((224,224)),
+    transforms.ToTensor()
+])
+
+input_tensor = testing_transform(image).unsqueeze(0)
+
+
+model.eval()
+input_tensor = input_tensor.to(device)
+
+
+with torch.no_grad():
+    outputs = model(input_tensor)
+
+
+
+    _, predicted_idx = torch.max(outputs, 1)
+
+
+predicted_class = class_names[predicted_idx.item()]
+print(f"Predction: {predicted_class}")
