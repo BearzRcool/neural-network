@@ -96,5 +96,3 @@ for epoch in range(epochs):
 # not too sure how to load this so I wont save it
 # torch.save(model.state_dict(), "cat_dog_model.pth")
 # print("Model saved to cat_dog_model.pth")
-
-#next time: use gemini to figure out how to run images through the model
