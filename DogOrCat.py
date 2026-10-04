@@ -99,36 +99,4 @@ for epoch in range(epochs):
 # torch.save(model.state_dict(), "cat_dog_model.pth")
 # print("Model saved to cat_dog_model.pth")
 
-
-
-
-
-#running image through:               cat or dog, 0-100
-image_path = data_dir / "TestImages" / "cat" / "0.jpg"
-image = Image.open(image_path).convert("RGB")
-
-
-
-
-testing_transform = transforms.Compose([
-    transforms.Resize((224,224)),
-    transforms.ToTensor()
-])
-
-input_tensor = testing_transform(image).unsqueeze(0)
-
-
-model.eval()
-input_tensor = input_tensor.to(device)
-
-
-with torch.no_grad():
-    outputs = model(input_tensor)
-
-
-
-    _, predicted_idx = torch.max(outputs, 1)
-
-
-predicted_class = class_names[predicted_idx.item()]
-print(f"Predction: {predicted_class}")
+#next time: use gemini to figure out how to run images through the model
